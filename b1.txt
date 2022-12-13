@@ -1,0 +1,80 @@
+#include <iostream>
+using namespace std;
+  
+int main() {
+	int tc;
+	cin>>tc;
+	for(int t=1; t<=tc; t++){
+	    int n, a[101][101];
+	    cin>>n;
+	    for(int i=0;i<n;i++){
+	        for(int j=0; j<n; j++){
+	            cin>>a[i][j];
+	        }
+	    }
+	   
+	    int maxH=0;
+	    for(int i=0; i<n;i++){
+	         int sumH=0;
+	        for(int j=0; j<n;j++){
+	          sumH += a[i][j];
+	          
+	        }
+	        if(sumH > maxH){
+	            maxH =sumH;
+	        }
+	        
+	    }
+	    
+	     int maxC=0;
+	    for(int i=0; i<n;i++){
+	         int sumC=0;
+	        for(int j=0; j<n;j++){
+	          sumC += a[j][i];
+	          
+	        }
+	        if(sumC > maxC){
+	            maxC =sumC;
+	        }
+	        
+	    }
+	    
+	    int maxX=0;
+	    int sumX =0;
+	    for(int i=0; i<n;i++){
+	        for(int j=0; j<n;j++){
+	            if( i==j ){
+	                sumX += a[i][j];
+	            }
+	        }
+	        if(sumX > maxX){
+	            maxX = sumX;
+	        }
+	    }
+	    
+	    	    int maxP=0;
+	    int sumP =0;
+	    for(int i=0; i<n;i++){
+	        for(int j=0; j<n;j++){
+	            if( i+j == n-1 ){
+	                sumP += a[i][j];
+	            }
+	        }
+	        if(sumP > maxP){
+	            maxP = sumP;
+	        }
+	    }
+	    
+	  int sumMax=0;
+
+	    int l[4]={maxH,maxC,maxX,maxP};
+	    for(int i=0;i<4;i++){
+	        if(l[i]>sumMax){
+	            sumMax = l[i];
+	        }
+	    }
+	    
+	    cout<<"#"<<t<<" "<<sumMax<<endl;
+	}
+	return 0;
+}
